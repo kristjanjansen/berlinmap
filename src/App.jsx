@@ -11,9 +11,9 @@ import districts from "./data/districts.json";
 import rents from "./data/rents.json";
 import kitas from "./data/kitas.json";
 
-import { getFreeKitas } from "./App2";
+import { getFreeKitas } from "./utils/utils";
 
-import { kitaLayer } from "./layers/kitaLayer";
+import { kitaLayer, kitaLayer2 } from "./layers/kitaLayer";
 import { districtLayer } from "./layers/districtLayer";
 
 const preferredDistricts = [
@@ -23,7 +23,8 @@ const preferredDistricts = [
   "Tempelhof",
   "Plänterwald",
   "Baumschulenweg",
-  "Schöneberg"
+  "Schöneberg",
+  "Moabit"
 ];
 
 const cleanRent = rent => {
@@ -91,7 +92,8 @@ const Map = () => {
               preferredDistricts.includes(district)
             ),
             d => setActiveKita(d.object.properties)
-          )
+          ),
+          kitaLayer2(kitas.filter(({ id }) => freeKitas.includes(id)))
         ]}
       >
         <StaticMap
@@ -142,6 +144,7 @@ const Map = () => {
             <br />
             <a
               href={`https://www.berlin.de/sen/jugend/familie-und-kinder/kindertagesbetreuung/kitas/verzeichnis/KitaDetailsNeu.aspx?ID=${activeKita.id}`}
+              target="_blank"
             >
               City kindergarten directory link
             </a>
@@ -150,7 +153,9 @@ const Map = () => {
             {activeKitaData && (
               <div>
                 Web:
-                <a href={activeKitaData.webLink}>{activeKitaData.webLink}</a>
+                <a target="_blank" href={activeKitaData.webLink}>
+                  {activeKitaData.webLink}
+                </a>
                 <br />
                 E-mail: {activeKitaData.email}
                 <br />
