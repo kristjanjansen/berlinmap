@@ -29,27 +29,6 @@ export const kitaLayer = (data, onActive) => {
     stroked: false,
     pointRadiusMinPixels: 2,
     getRadius: d => area2radius(d.properties.over * 2),
-    onClick: d => (d.object ? onActive(d) : null)
-  });
-};
-
-const kitaData2 = data => ({
-  type: "FeatureCollection",
-  features: data.map(kita => ({
-    type: "Feature",
-    geometry: {
-      type: "Point",
-      coordinates: [kita.alon, kita.alat]
-    }
-  }))
-});
-
-export const kitaLayer2 = data => {
-  return new GeoJsonLayer({
-    id: "kitaLayer2",
-    data: kitaData2(data),
-    getRadius: d => 200,
-    getFillColor: [255, 0, 0, 128],
-    pointRadiusMinPixels: 2
+    onHover: d => (d.object ? onActive(d) : null)
   });
 };

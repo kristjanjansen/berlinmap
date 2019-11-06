@@ -1,33 +1,5 @@
 import { GeoJsonLayer } from "@deck.gl/layers";
-import { linearScale } from "d3";
-
-// const getRentPrice = (f, rentData) => {
-//   const { Name: n } = f.properties;
-//   const priceN = rentData.filter(({ neighbourhood: n2 }) =>
-//     n ? n.includes(n2) : false
-//   )[0];
-//   if (priceN) {
-//     f.properties.price = priceN.price;
-//   }
-//   f.properties.name = f.properties.Name;
-//   delete f.properties.Name;
-//   delete f.properties.abbrev;
-//   return f;
-// };
-
-// const getRentPrice2 = (f, rentData) => {
-//   const { Name: n } = f.properties;
-//   const priceN = rentData.filter(({ neighbourhood: n2 }) =>
-//     n ? n.includes(n2) : false
-//   )[0];
-//   if (priceN) {
-//     f.properties.price = priceN.price;
-//   }
-//   f.properties.name = f.properties.Name;
-//   delete f.properties.Name;
-//   delete f.properties.abbrev;
-//   return f;
-// };
+import { scaleLinear, extent } from "d3";
 
 const districtData = (data, rentData) => {
   return {
@@ -48,15 +20,19 @@ const districtData = (data, rentData) => {
   };
 };
 
-export const districtLayer = (data, rentData, preferredDistricts, onActive) =>
-  new GeoJsonLayer({
+export const districtLayer = (data, rentData, preferredDistricts, onActive) => {
+  const scale = scaleLinear()
+    .domain(extent(rentData.map(d => d.price)))
+    .range([25, 200]);
+
+  return new GeoJsonLayer({
     id: "geojson",
     data: districtData(data, rentData),
     getFillColor: d => {
       if (d.properties.price) {
-        return [255, 103, 0, d.properties.price * 7];
+        return [255, 103, 0, scale(d.properties.price)];
       }
-      return [255, 255, 255, 128];
+      return [0, 0, 0, 50];
     },
     getStrokeColor: [0, 0, 0, 128],
     getLineWidth: d =>
@@ -64,3 +40,4 @@ export const districtLayer = (data, rentData, preferredDistricts, onActive) =>
     pickable: true,
     onHover: d => (d.object ? onActive(d) : null)
   });
+};

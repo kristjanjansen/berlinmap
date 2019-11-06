@@ -3,9 +3,10 @@ import DeckGL from "@deck.gl/react";
 //import { GeoJsonLayer } from "@deck.gl/layers";
 import { StaticMap } from "react-map-gl";
 //import { center } from "@turf/turf";
-//import { useQuery } from "react-query";
 
 import "mapbox-gl/dist/mapbox-gl.css";
+import "./fonts/manrope.css";
+import "./App.css";
 
 import districts from "./data/districts.json";
 import rents from "./data/rents.json";
@@ -25,7 +26,13 @@ const preferredDistricts = [
   "Plänterwald",
   "Baumschulenweg",
   "Schöneberg",
-  "Moabit"
+  "Britz",
+  "Steglitz",
+  "Oberschöneweide",
+  "Niederschöneweide",
+  "Karlshorst",
+  "Rummelsburg",
+  "Friedrichshain"
 ];
 
 const cleanRent = rent => {
@@ -68,7 +75,7 @@ const Map = () => {
     if (activeKita && activeKita.id) {
       fetch(
         `https://sofetch.glitch.me/${encodeURI(
-          "http://www.kita-suche.berlin/data/individual/2018_kitas.json"
+          `http://www.kita-suche.berlin/data/individual/${activeKita.id}_kitas.json`
         )}`
       )
         .then(res => res.json())
@@ -81,6 +88,7 @@ const Map = () => {
         viewState={viewport}
         controller
         onViewStateChange={({ viewState }) => setViewport(viewState)}
+        getCursor={d => "crosshair"}
         layers={[
           districtLayer(
             districts,
@@ -98,6 +106,7 @@ const Map = () => {
         ]}
       >
         <StaticMap
+          attributionControl={false}
           reuseMaps
           mapStyle="mapbox://styles/mapbox/streets-v11"
           mapboxApiAccessToken="pk.eyJ1Ijoia3Jpc3RqYW5qYW5zZW4iLCJhIjoiY2pmaTcwMHdnMDhkbDJxcXZ0cmtpcmVuaCJ9.zOjSTb9ClEMeLPxGuA9t7g"
@@ -108,34 +117,53 @@ const Map = () => {
           style={{
             position: "fixed",
             fontFamily: "sans-serif",
-            padding: "10px",
-            top: "10px",
-            right: "10px",
-            width: "350px",
-            background: "rgba(255,255,255,0.75)"
+            padding: "45px 30px",
+            top: "0px",
+            left: "0px",
+            width: "400px",
+            opacity: 0.9
           }}
         >
-          {activeDistrict.name} {activeDistrict.price || "?"} € per m²
+          <div
+            style={{
+              fontWeight: 900,
+              fontSize: "50px",
+              marginBottom: "20px"
+            }}
+          >
+            {activeDistrict.name}
+          </div>
+          <p style={{ fontWeight: 900, fontSize: "30px" }}>
+            €{activeDistrict.price || "?"} per m²
+          </p>
         </div>
       )}
       {activeKita && (
         <div
           style={{
             position: "fixed",
-            fontFamily: "sans-serif",
-            padding: "10px",
-            top: "10px",
-            left: "10px",
+            padding: "20px",
+            top: "0px",
+            right: "0px",
+            bottom: "0px",
             width: "350px",
-            background: "rgba(255,255,255,0.75)"
+            background: "rgba(255,255,255,0.7)"
           }}
         >
-          <div style={{ fontWeight: "bold" }}>{activeKita.name}</div>
+          <div
+            style={{
+              fontSize: "30px",
+              lineHeight: "1.1em",
+              fontWeight: 900
+            }}
+          >
+            {activeKita.name}
+          </div>
           <br />
           <div>
-            Address: {activeKita.address}
+            <b>Address:</b> {activeKita.address}
             <br />
-            over 3 yo places: {activeKita.over}
+            <b>Places:</b> {activeKita.over} (over 3yo)
             <br />
             <a href={activeKita.maplink} target="_blank">
               See on map
@@ -152,17 +180,17 @@ const Map = () => {
             <br />
             {activeKitaData && (
               <div>
-                Web:
+                <b>Web:</b>
                 <a target="_blank" href={activeKitaData.webLink}>
                   {activeKitaData.webLink}
                 </a>
                 <br />
-                E-mail: {activeKitaData.email}
+                <b>E-mail:</b> {activeKitaData.email}
                 <br />
                 <br />
-                Educational: {activeKitaData.educational}
+                <b>Educational:</b> {activeKitaData.educational}
                 <br />
-                Topics: {activeKitaData.topics}
+                <b>Topics:</b> {activeKitaData.topics}
               </div>
             )}
           </div>

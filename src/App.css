@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  line-height: 150%;
+  font-size: 14px;
+  font-family: Manrope, sans-serif;
+  color: rgb(0, 0, 0, 0.8);
+}
+a {
+  color: black;
+}
+pre {
+  overflow: auto;
+}
