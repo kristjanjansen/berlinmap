@@ -1,0 +1,412 @@
+[
+  {
+    "neighbourhood": "Adlershof",
+    "neighbourhood_group": "Treptow",
+    "price": 10.8
+  },
+  {
+    "neighbourhood": "Alt-Hohenschönhausen",
+    "neighbourhood_group": "Hohenschönhausen",
+    "price": 10.76
+  },
+  {
+    "neighbourhood": "Alt-Treptow",
+    "neighbourhood_group": "Alt-Treptow",
+    "price": 12.99
+  },
+  {
+    "neighbourhood": "Altglienicke",
+    "neighbourhood_group": "Treptow",
+    "price": 10.25
+  },
+  {
+    "neighbourhood": "Tree School Trail",
+    "neighbourhood_group": "Treptow",
+    "price": 10.82
+  },
+  {
+    "neighbourhood": "Biesdorf",
+    "neighbourhood_group": "Marzahn",
+    "price": 13.54
+  },
+  {
+    "neighbourhood": "Bohnsdorf",
+    "neighbourhood_group": "Treptow",
+    "price": 10.26
+  },
+  {
+    "neighbourhood": "Borsigwalde",
+    "neighbourhood_group": "Borsigwalde",
+    "price": 9.01
+  },
+  {
+    "neighbourhood": "Britz",
+    "neighbourhood_group": "Neukölln",
+    "price": 8.58
+  },
+  {
+    "neighbourhood": "Book",
+    "neighbourhood_group": "Pankow",
+    "price": 9.93
+  },
+  {
+    "neighbourhood": "Buckow",
+    "neighbourhood_group": "Neukölln",
+    "price": 10.01
+  },
+  {
+    "neighbourhood": "Charlottenburg",
+    "neighbourhood_group": "Charlottenburg",
+    "price": 15.89
+  },
+  {
+    "neighbourhood": "Dahlem",
+    "neighbourhood_group": "Zehlendorf",
+    "price": 14.35
+  },
+  {
+    "neighbourhood": "French Buchholz",
+    "neighbourhood_group": "Pankow",
+    "price": 11.56
+  },
+  {
+    "neighbourhood": "Friedenau",
+    "neighbourhood_group": "Friedenau",
+    "price": 11.97
+  },
+  {
+    "neighbourhood": "Friedrichsfelde",
+    "neighbourhood_group": "Lichtenberg",
+    "price": 11.46
+  },
+  {
+    "neighbourhood": "Friedrichshagen",
+    "neighbourhood_group": "Koepenick",
+    "price": 12.67
+  },
+  {
+    "neighbourhood": "Friedrichshain",
+    "neighbourhood_group": "Friedrichshain",
+    "price": 16.17
+  },
+  {
+    "neighbourhood": "Frohnau",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 10.34
+  },
+  {
+    "neighbourhood": "Gesundbrunnen",
+    "neighbourhood_group": "Gesundbrunnen",
+    "price": 12.74
+  },
+  {
+    "neighbourhood": "Grunau",
+    "neighbourhood_group": "Köpenick",
+    "price": 11.39
+  },
+  {
+    "neighbourhood": "Grunewald",
+    "neighbourhood_group": "Wilmersdorf",
+    "price": 14.45
+  },
+  {
+    "neighbourhood": "Hakenfelde",
+    "neighbourhood_group": "Hakenfelde",
+    "price": 12.37
+  },
+  {
+    "neighbourhood": "Halensee",
+    "neighbourhood_group": "Halensee",
+    "price": 17.04
+  },
+  {
+    "neighbourhood": "Hansa district",
+    "neighbourhood_group": "Hansa district",
+    "price": 16.16
+  },
+  {
+    "neighbourhood": "Haselhorst",
+    "neighbourhood_group": "Spandau",
+    "price": 8.23
+  },
+  {
+    "neighbourhood": "Heiligensee",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 13.46
+  },
+  {
+    "neighbourhood": "Hellersdorf",
+    "neighbourhood_group": "Hellersdorf",
+    "price": 9.97
+  },
+  {
+    "neighbourhood": "Hermsdorf",
+    "neighbourhood_group": "Hermsdorf",
+    "price": 12.46
+  },
+  {
+    "neighbourhood": "Johannisthal",
+    "neighbourhood_group": "Treptow",
+    "price": 9.47
+  },
+  {
+    "neighbourhood": "Karlshorst",
+    "neighbourhood_group": "Lichtenberg",
+    "price": 11.02
+  },
+  {
+    "neighbourhood": "Karow",
+    "neighbourhood_group": "Weissensee",
+    "price": 10.71
+  },
+  {
+    "neighbourhood": "Kaulsdorf",
+    "neighbourhood_group": "Hellersdorf",
+    "price": 9.05
+  },
+  {
+    "neighbourhood": "Kladow",
+    "neighbourhood_group": "Kladow",
+    "price": 13.35
+  },
+  {
+    "neighbourhood": "Konradshöhe",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 11.53
+  },
+  {
+    "neighbourhood": "Köpenick",
+    "neighbourhood_group": "Köpenick",
+    "price": 11.13
+  },
+  {
+    "neighbourhood": "Kreuzberg",
+    "neighbourhood_group": "Kreuzberg",
+    "price": 17.16
+  },
+  {
+    "neighbourhood": "Lankwitz",
+    "neighbourhood_group": "Steglitz",
+    "price": 10.5
+  },
+  {
+    "neighbourhood": "Lichtenberg",
+    "neighbourhood_group": "Lichtenberg",
+    "price": 11.21
+  },
+  {
+    "neighbourhood": "Lichtenrade",
+    "neighbourhood_group": "Tempelhof",
+    "price": 10.08
+  },
+  {
+    "neighbourhood": "Lichterfelde",
+    "neighbourhood_group": "Steglitz",
+    "price": 11.36
+  },
+  {
+    "neighbourhood": "Mahlsdorf",
+    "neighbourhood_group": "Hellersdorf",
+    "price": 10.89
+  },
+  {
+    "neighbourhood": "Mariendorf",
+    "neighbourhood_group": "Tempelhof",
+    "price": 10.55
+  },
+  {
+    "neighbourhood": "Marienfelde",
+    "neighbourhood_group": "Tempelhof",
+    "price": 20.35
+  },
+  {
+    "neighbourhood": "Märkisches Viertel",
+    "neighbourhood_group": "Märkisches Viertel",
+    "price": 8.82
+  },
+  {
+    "neighbourhood": "Marzahn",
+    "neighbourhood_group": "Marzahn",
+    "price": 8.55
+  },
+  {
+    "neighbourhood": "Middle",
+    "neighbourhood_group": "middle",
+    "price": 17.61
+  },
+  {
+    "neighbourhood": "Moabite",
+    "neighbourhood_group": "Moabite",
+    "price": 17.7
+  },
+  {
+    "neighbourhood": "Müggelheim",
+    "neighbourhood_group": "Köpenick",
+    "price": 9.25
+  },
+  {
+    "neighbourhood": "Neu-Hohenschönhausen",
+    "neighbourhood_group": "Hohenschönhausen",
+    "price": 11.72
+  },
+  {
+    "neighbourhood": "Neukölln",
+    "neighbourhood_group": "Neukölln",
+    "price": 13.16
+  },
+  {
+    "neighbourhood": "Niederschöneweide",
+    "neighbourhood_group": "Treptow",
+    "price": 12.92
+  },
+  {
+    "neighbourhood": "Niederschoenhausen",
+    "neighbourhood_group": "Pankow",
+    "price": 10.53
+  },
+  {
+    "neighbourhood": "Oberschöneweide",
+    "neighbourhood_group": "Köpenick",
+    "price": 11.59
+  },
+  {
+    "neighbourhood": "Pankow",
+    "neighbourhood_group": "Pankow",
+    "price": 12.42
+  },
+  {
+    "neighbourhood": "Plänterwald",
+    "neighbourhood_group": "Treptow",
+    "price": 9.78
+  },
+  {
+    "neighbourhood": "Prenzlauer Berg",
+    "neighbourhood_group": "Prenzlauer Berg",
+    "price": 17.61
+  },
+  {
+    "neighbourhood": "Rahnsdorf",
+    "neighbourhood_group": "Koepenick",
+    "price": 11.28
+  },
+  {
+    "neighbourhood": "Reinickendorf",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 10.91
+  },
+  {
+    "neighbourhood": "Rosenthal",
+    "neighbourhood_group": "Pankow",
+    "price": 11.94
+  },
+  {
+    "neighbourhood": "Rudow",
+    "neighbourhood_group": "Neukölln",
+    "price": 9.07
+  },
+  {
+    "neighbourhood": "Schmargendorf",
+    "neighbourhood_group": "Wilmersdorf",
+    "price": 12.93
+  },
+  {
+    "neighbourhood": "Schmöckwitz",
+    "neighbourhood_group": "Köpenick",
+    "price": 10.82
+  },
+  {
+    "neighbourhood": "Schöneberg",
+    "neighbourhood_group": "Schöneberg",
+    "price": 14.97
+  },
+  {
+    "neighbourhood": "Siemensstadt",
+    "neighbourhood_group": "Spandau",
+    "price": 8.91
+  },
+  {
+    "neighbourhood": "Spandau",
+    "neighbourhood_group": "Spandau",
+    "price": 9.43
+  },
+  {
+    "neighbourhood": "Staaken",
+    "neighbourhood_group": "Spandau",
+    "price": 9.99
+  },
+  {
+    "neighbourhood": "Steglitz",
+    "neighbourhood_group": "Steglitz",
+    "price": 13.41
+  },
+  {
+    "neighbourhood": "Tegel",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 11.24
+  },
+  {
+    "neighbourhood": "Tempelhof",
+    "neighbourhood_group": "Tempelhof",
+    "price": 13.26
+  },
+  {
+    "neighbourhood": "Tiergarten",
+    "neighbourhood_group": "Tiergarten",
+    "price": 16.12
+  },
+  {
+    "neighbourhood": "Treptow",
+    "neighbourhood_group": "Treptow",
+    "price": 10.43
+  },
+  {
+    "neighbourhood": "Waidmannslust",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 8.4
+  },
+  {
+    "neighbourhood": "Wannsee",
+    "neighbourhood_group": "Zehlendorf",
+    "price": 12.39
+  },
+  {
+    "neighbourhood": "Wartenberg",
+    "neighbourhood_group": "Hohenschoenhausen",
+    "price": 10.57
+  },
+  {
+    "neighbourhood": "Wedding",
+    "neighbourhood_group": "Wedding",
+    "price": 11.21
+  },
+  {
+    "neighbourhood": "Weissensee",
+    "neighbourhood_group": "Weißensee",
+    "price": 13.85
+  },
+  {
+    "neighbourhood": "Westend",
+    "neighbourhood_group": "Wilmersdorf",
+    "price": 13.82
+  },
+  {
+    "neighbourhood": "Wilhelmsruh",
+    "neighbourhood_group": "Wilhelmsruh",
+    "price": 10.46
+  },
+  {
+    "neighbourhood": "Wilmersdorf",
+    "neighbourhood_group": "Wilmersdorf",
+    "price": 14.83
+  },
+  {
+    "neighbourhood": "Wittenau",
+    "neighbourhood_group": "Reinickendorf",
+    "price": 9.49
+  },
+  {
+    "neighbourhood": "Zehlendorf",
+    "neighbourhood_group": "Zehlendorf",
+    "price": 12.37
+  }
+]
