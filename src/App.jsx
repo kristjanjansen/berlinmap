@@ -13,7 +13,8 @@ import kitas from "./data/kitas.json";
 
 import { getFreeKitas } from "./utils/utils";
 
-import { kitaLayer, kitaLayer2 } from "./layers/kitaLayer";
+import { kitaLayer } from "./layers/kitaLayer";
+import { freeKitaLayer } from "./layers/freeKitaLayer";
 import { districtLayer } from "./layers/districtLayer";
 
 const preferredDistricts = [
@@ -93,7 +94,7 @@ const Map = () => {
             ),
             d => setActiveKita(d.object.properties)
           ),
-          kitaLayer2(kitas.filter(({ id }) => freeKitas.includes(id)))
+          freeKitaLayer(kitas.filter(({ id }) => freeKitas.includes(id)))
         ]}
       >
         <StaticMap
@@ -114,7 +115,6 @@ const Map = () => {
             background: "rgba(255,255,255,0.75)"
           }}
         >
-          {JSON.stringify(freeKitas)}
           {activeDistrict.name} {activeDistrict.price || "?"} € per m²
         </div>
       )}
