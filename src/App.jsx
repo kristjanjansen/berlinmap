@@ -11,6 +11,8 @@ import districts from "./data/districts.json";
 import rents from "./data/rents.json";
 import kitas from "./data/kitas.json";
 
+import { getFreeKitas } from "./App2";
+
 import { kitaLayer } from "./layers/kitaLayer";
 import { districtLayer } from "./layers/districtLayer";
 
@@ -49,6 +51,16 @@ const Map = () => {
   const [activeDistrict, setActiveDistrict] = useState(null);
   const [activeKita, setActiveKita] = useState(null);
   const [activeKitaData, setActiveKitaData] = useState(null);
+
+  const [freeKitas, setFreeKitas] = useState([]);
+
+  useEffect(() => {
+    const getKitas = async () => {
+      const kitas = await getFreeKitas();
+      setFreeKitas(kitas);
+    };
+    getKitas();
+  }, []);
 
   useEffect(() => {
     if (activeKita && activeKita.id) {
@@ -100,6 +112,7 @@ const Map = () => {
             background: "rgba(255,255,255,0.75)"
           }}
         >
+          {JSON.stringify(freeKitas)}
           {activeDistrict.name} {activeDistrict.price || "?"} € per m²
         </div>
       )}
