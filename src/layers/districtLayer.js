@@ -1,4 +1,5 @@
 import { GeoJsonLayer } from "@deck.gl/layers";
+import { linearScale } from "d3";
 
 // const getRentPrice = (f, rentData) => {
 //   const { Name: n } = f.properties;

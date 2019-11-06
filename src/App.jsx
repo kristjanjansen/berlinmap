@@ -24,6 +24,19 @@ const preferredDistricts = [
   "Schöneberg"
 ];
 
+const cleanRent = rent => {
+  const fixName = {
+    Weissensee: "Weißensee",
+    Middle: "Mitte",
+    Moabite: "Moabit",
+    "Hansa district": "Hansaviertel"
+  };
+  if (fixName[rent.neighbourhood]) {
+    rent.neighbourhood = fixName[rent.neighbourhood];
+  }
+  return rent;
+};
+
 const Map = () => {
   const [viewport, setViewport] = useState({
     width: "100%",
@@ -55,11 +68,12 @@ const Map = () => {
         controller
         onViewStateChange={({ viewState }) => setViewport(viewState)}
         layers={[
-          districtLayer(districts, rents, preferredDistricts, d => {
-            setActiveDistrict(
-              `${d.object.properties.name} / ${d.object.properties.price} € per m²`
-            );
-          }),
+          districtLayer(
+            districts,
+            rents.map(cleanRent),
+            preferredDistricts,
+            d => setActiveDistrict(d.object.properties)
+          ),
           kitaLayer(
             kitas.filter(({ district }) =>
               preferredDistricts.includes(district)
@@ -86,7 +100,7 @@ const Map = () => {
             background: "rgba(255,255,255,0.75)"
           }}
         >
-          {activeDistrict}
+          {activeDistrict.name} {activeDistrict.price || "?"} € per m²
         </div>
       )}
       {activeKita && (
