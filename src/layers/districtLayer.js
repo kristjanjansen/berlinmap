@@ -34,7 +34,7 @@ export const districtLayer = (data, rentData, preferredDistricts, onActive) => {
       }
       return [0, 0, 0, 50];
     },
-    getStrokeColor: [0, 0, 0, 128],
+    getLineColor: [0, 0, 0, 128],
     getLineWidth: d =>
       preferredDistricts.includes(d.properties.name) ? 30 : 10,
     pickable: true,

@@ -11,6 +11,7 @@ import "./App.css";
 import districts from "./data/districts.json";
 import rents from "./data/rents.json";
 import kitas from "./data/kitas.json";
+import wall from "./data/wall.json";
 
 import { getFreeKitas, getTrackedKitas } from "./utils/utils";
 
@@ -18,6 +19,7 @@ import { kitaLayer } from "./layers/kitaLayer";
 import { freeKitaLayer } from "./layers/freeKitaLayer";
 import { districtLayer } from "./layers/districtLayer";
 import { trackedKitaLayer } from "./layers/trackedKitaLayer";
+import { wallLayer } from "./layers/wallLayer";
 
 const preferredDistricts = [
   "Kreuzberg",
@@ -107,6 +109,7 @@ const Map = () => {
             preferredDistricts,
             d => setActiveDistrict(d.object.properties)
           ),
+          wallLayer(wall),
           kitaLayer(
             kitas.filter(({ district }) =>
               preferredDistricts.includes(district)
