@@ -128,7 +128,8 @@ const Map = () => {
             style={{
               fontWeight: 900,
               fontSize: "50px",
-              marginBottom: "20px"
+              lineHeight: "1em",
+              marginBottom: "15px"
             }}
           >
             {activeDistrict.name}
