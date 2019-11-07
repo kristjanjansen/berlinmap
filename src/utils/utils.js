@@ -2,6 +2,31 @@ import { load } from "cheerio";
 
 export const area2radius = area => area / (2 * Math.PI);
 
+export const parseSheet = data => {
+  return data.feed.entry.map(entry => {
+    return Object.keys(entry)
+      .map(field => {
+        if (field.startsWith("gsx$")) {
+          return [field.split("$")[1], entry[field].$t];
+        }
+      })
+      .filter(field => field)
+      .reduce((field, item) => {
+        field[item[0]] = item[1];
+        return field;
+      }, {});
+  });
+};
+
+export const getTrackedKitas = () => {
+  const id = "1x5G-IeHEj2EA8ILBRi6vyzyag5N4wL8ShBpJkKkwsvc";
+  return fetch(
+    `https://spreadsheets.google.com/feeds/list/${id}/od6/public/values?alt=json`
+  )
+    .then(res => res.json())
+    .then(res => parseSheet(res));
+};
+
 export const getFreeKitas = () =>
   fetch(
     `https://sofetch.glitch.me/${encodeURI(

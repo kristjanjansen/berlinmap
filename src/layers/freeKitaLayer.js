@@ -15,8 +15,8 @@ export const freeKitaLayer = data => {
   return new GeoJsonLayer({
     id: "kitaLayer2",
     data: freeKitaData(data),
-    getRadius: d => 200,
-    getFillColor: [255, 0, 0, 128],
+    getRadius: d => 250,
+    getFillColor: [255, 255, 0, 128],
     pointRadiusMinPixels: 2
   });
 };

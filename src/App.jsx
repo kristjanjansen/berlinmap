@@ -12,11 +12,12 @@ import districts from "./data/districts.json";
 import rents from "./data/rents.json";
 import kitas from "./data/kitas.json";
 
-import { getFreeKitas } from "./utils/utils";
+import { getFreeKitas, getTrackedKitas } from "./utils/utils";
 
 import { kitaLayer } from "./layers/kitaLayer";
 import { freeKitaLayer } from "./layers/freeKitaLayer";
 import { districtLayer } from "./layers/districtLayer";
+import { trackedKitaLayer } from "./layers/trackedKitaLayer";
 
 const preferredDistricts = [
   "Kreuzberg",
@@ -27,12 +28,12 @@ const preferredDistricts = [
   "Baumschulenweg",
   "Schöneberg",
   "Britz",
-  "Steglitz",
-  "Oberschöneweide",
-  "Niederschöneweide",
-  "Karlshorst",
+  "Lichtenberg",
+  "Friedrichshain",
   "Rummelsburg",
-  "Friedrichshain"
+  "Karlshorst",
+  "Moabit",
+  "Wilmersdorf"
 ];
 
 const cleanRent = rent => {
@@ -71,6 +72,16 @@ const Map = () => {
     getKitas();
   }, []);
 
+  const [trackedKitas, setTrackedKitas] = useState([]);
+
+  useEffect(() => {
+    const getKitas = async () => {
+      const kitas = await getTrackedKitas();
+      setTrackedKitas(kitas);
+    };
+    getKitas();
+  }, []);
+
   useEffect(() => {
     if (activeKita && activeKita.id) {
       fetch(
@@ -102,7 +113,13 @@ const Map = () => {
             ),
             d => setActiveKita(d.object.properties)
           ),
-          freeKitaLayer(kitas.filter(({ id }) => freeKitas.includes(id)))
+          freeKitaLayer(kitas.filter(({ id }) => freeKitas.includes(id))),
+          trackedKitaLayer(
+            kitas.filter(({ id }) => {
+              return trackedKitas.map(k => parseInt(k.id)).includes(id);
+            }),
+            trackedKitas
+          )
         ]}
       >
         <StaticMap
@@ -116,19 +133,16 @@ const Map = () => {
         <div
           style={{
             position: "fixed",
-            fontFamily: "sans-serif",
-            padding: "45px 30px",
-            top: "0px",
-            left: "0px",
-            width: "400px",
-            opacity: 0.9
+            top: "30px",
+            left: "30px",
+            display: "inline"
           }}
         >
           <div
             style={{
               fontWeight: 900,
-              fontSize: "50px",
-              lineHeight: "1em",
+              fontSize: "70px",
+              lineHeight: "0.9em",
               marginBottom: "15px"
             }}
           >
@@ -142,13 +156,14 @@ const Map = () => {
       {activeKita && (
         <div
           style={{
+            borderLeft: "3px solid black",
             position: "fixed",
             padding: "20px",
             top: "0px",
             right: "0px",
             bottom: "0px",
             width: "350px",
-            background: "rgba(255,255,255,0.7)"
+            background: "rgba(255,255,255,0.8)"
           }}
         >
           <div
