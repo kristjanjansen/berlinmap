@@ -12,6 +12,7 @@ import districts from "./data/districts.json";
 import rents from "./data/rents.json";
 import kitas from "./data/kitas.json";
 import wall from "./data/wall.json";
+import airbnb from "./data/airbnb.json";
 
 import { getFreeKitas, getTrackedKitas } from "./utils/utils";
 
@@ -20,6 +21,7 @@ import { freeKitaLayer } from "./layers/freeKitaLayer";
 import { districtLayer } from "./layers/districtLayer";
 import { trackedKitaLayer } from "./layers/trackedKitaLayer";
 import { wallLayer } from "./layers/wallLayer";
+import { airbnbLayer } from "./layers/airbnbLayer";
 
 const preferredDistricts = [
   "Kreuzberg",
@@ -50,6 +52,8 @@ const cleanRent = rent => {
   }
   return rent;
 };
+
+const detailedZoom = 13.5;
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -103,18 +107,27 @@ const Map = () => {
         onViewStateChange={({ viewState }) => setViewport(viewState)}
         getCursor={d => "crosshair"}
         layers={[
+          airbnbLayer(
+            airbnb,
+            // airbnb.filter(
+            //   d => d.room_type == "Entire home/apt" && d.price <= 1000
+            // ),
+            viewport.zoom > detailedZoom
+          ),
           districtLayer(
             districts,
             rents.map(cleanRent),
             preferredDistricts,
-            d => setActiveDistrict(d.object.properties)
+            d => setActiveDistrict(d.object.properties),
+            viewport.zoom > detailedZoom
           ),
           wallLayer(wall),
           kitaLayer(
             kitas.filter(({ district }) =>
               preferredDistricts.includes(district)
             ),
-            d => setActiveKita(d.object.properties)
+            d => setActiveKita(d.object.properties),
+            viewport.zoom > detailedZoom
           ),
           freeKitaLayer(kitas.filter(({ id }) => freeKitas.includes(id))),
           trackedKitaLayer(
@@ -128,7 +141,11 @@ const Map = () => {
         <StaticMap
           attributionControl={false}
           reuseMaps
-          mapStyle="mapbox://styles/mapbox/streets-v11"
+          mapStyle={
+            viewport.zoom > detailedZoom
+              ? "mapbox://styles/mapbox/satellite-streets-v11"
+              : "mapbox://styles/mapbox/streets-v11"
+          }
           mapboxApiAccessToken="pk.eyJ1Ijoia3Jpc3RqYW5qYW5zZW4iLCJhIjoiY2pmaTcwMHdnMDhkbDJxcXZ0cmtpcmVuaCJ9.zOjSTb9ClEMeLPxGuA9t7g"
         />
       </DeckGL>
@@ -138,7 +155,8 @@ const Map = () => {
             position: "fixed",
             top: "30px",
             left: "30px",
-            display: "inline"
+            display: "inline",
+            color: viewport.zoom > detailedZoom ? "white" : "black"
           }}
         >
           <div
@@ -166,7 +184,7 @@ const Map = () => {
             right: "0px",
             bottom: "0px",
             width: "350px",
-            background: "rgba(255,255,255,0.8)"
+            background: "rgba(255,255,255,0.9)"
           }}
         >
           <div

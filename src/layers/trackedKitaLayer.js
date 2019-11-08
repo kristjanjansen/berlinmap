@@ -15,7 +15,12 @@ const trackedKitaData = (data, trackedKitas) => ({
 });
 
 export const trackedKitaLayer = (data, trackedKitas) => {
-  const colors = [[80, 80, 80, 180], [255, 0, 0, 180], [0, 180, 120, 180]];
+  const colors = [
+    [80, 80, 80, 180],
+    [255, 0, 0, 180],
+    [0, 180, 120, 180],
+    [200, 0, 200, 180]
+  ];
   return new GeoJsonLayer({
     id: "trackedKitaLayer",
     data: trackedKitaData(data, trackedKitas),

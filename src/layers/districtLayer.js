@@ -20,15 +20,24 @@ const districtData = (data, rentData) => {
   };
 };
 
-export const districtLayer = (data, rentData, preferredDistricts, onActive) => {
+export const districtLayer = (
+  data,
+  rentData,
+  preferredDistricts,
+  onActive,
+  isDetailed
+) => {
   const scale = scaleLinear()
     .domain(extent(rentData.map(d => d.price)))
-    .range([25, 200]);
+    .range([25, 128]);
 
   return new GeoJsonLayer({
     id: "geojson",
     data: districtData(data, rentData),
     getFillColor: d => {
+      if (isDetailed) {
+        return [0, 0, 0, 0];
+      }
       if (d.properties.price) {
         return [255, 103, 0, scale(d.properties.price)];
       }

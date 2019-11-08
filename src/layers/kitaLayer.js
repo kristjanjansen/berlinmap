@@ -19,12 +19,12 @@ const kitaData = data => ({
     }))
 });
 
-export const kitaLayer = (data, onActive) => {
+export const kitaLayer = (data, onActive, isDetailed) => {
   return new GeoJsonLayer({
     id: "kitaLayer",
     data: kitaData(data),
     radius: 10,
-    getFillColor: [0, 0, 0, 200],
+    getFillColor: isDetailed ? [0, 200, 200, 220] : [0, 50, 50, 220],
     pickable: true,
     stroked: false,
     pointRadiusMinPixels: 2,

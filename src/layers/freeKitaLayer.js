@@ -16,7 +16,7 @@ export const freeKitaLayer = data => {
     id: "kitaLayer2",
     data: freeKitaData(data),
     getRadius: d => 250,
-    getFillColor: [255, 255, 0, 128],
+    getFillColor: [255, 255, 0, 180],
     pointRadiusMinPixels: 2
   });
 };
