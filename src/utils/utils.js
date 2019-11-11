@@ -27,6 +27,15 @@ export const getTrackedKitas = () => {
     .then(res => parseSheet(res));
 };
 
+export const getFlats = () => {
+  const id = "1Qaiu6UQ0diP1olV1VYfMP1XY4ZNyQpMxqHiIKLNHaHU";
+  return fetch(
+    `https://spreadsheets.google.com/feeds/list/${id}/od6/public/values?alt=json`
+  )
+    .then(res => res.json())
+    .then(res => parseSheet(res));
+};
+
 export const getFreeKitas = () =>
   fetch(
     `https://sofetch.glitch.me/${encodeURI(
@@ -51,3 +60,7 @@ export const getFreeKitas = () =>
 
       return ids;
     });
+
+export const getMetro = () => {
+  return fetch(`/data/metro.json`).then(res => res.json());
+};

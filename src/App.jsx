@@ -14,7 +14,12 @@ import kitas from "./data/kitas.json";
 import wall from "./data/wall.json";
 import airbnb from "./data/airbnb.json";
 
-import { getFreeKitas, getTrackedKitas } from "./utils/utils";
+import {
+  getFreeKitas,
+  getTrackedKitas,
+  getMetro,
+  getFlats
+} from "./utils/utils";
 
 import { kitaLayer } from "./layers/kitaLayer";
 import { freeKitaLayer } from "./layers/freeKitaLayer";
@@ -22,6 +27,8 @@ import { districtLayer } from "./layers/districtLayer";
 import { trackedKitaLayer } from "./layers/trackedKitaLayer";
 import { wallLayer } from "./layers/wallLayer";
 import { airbnbLayer } from "./layers/airbnbLayer";
+import { metroLayer } from "./layers/metroLayer";
+import { flatsLayer } from "./layers/flatsLayer";
 
 const preferredDistricts = [
   "Kreuzberg",
@@ -37,7 +44,9 @@ const preferredDistricts = [
   "Rummelsburg",
   "Karlshorst",
   "Moabit",
-  "Wilmersdorf"
+  "Wilmersdorf",
+  "Friedenau",
+  "Steglitz"
 ];
 
 const cleanRent = rent => {
@@ -88,6 +97,26 @@ const Map = () => {
     getKitas();
   }, []);
 
+  const [flats, setFlats] = useState([]);
+
+  useEffect(() => {
+    const get = async () => {
+      const flats = await getFlats();
+      setFlats(flats);
+    };
+    get();
+  }, []);
+
+  const [metro, setMetro] = useState([]);
+
+  useEffect(() => {
+    const get = async () => {
+      const { features } = await getMetro();
+      setMetro(features);
+    };
+    get();
+  }, []);
+
   useEffect(() => {
     if (activeKita && activeKita.id) {
       fetch(
@@ -107,13 +136,12 @@ const Map = () => {
         onViewStateChange={({ viewState }) => setViewport(viewState)}
         getCursor={d => "crosshair"}
         layers={[
-          airbnbLayer(
-            airbnb,
-            // airbnb.filter(
-            //   d => d.room_type == "Entire home/apt" && d.price <= 1000
-            // ),
-            viewport.zoom > detailedZoom
-          ),
+          // airbnbLayer(
+          //   airbnb.filter(
+          //     d => d.room_type == "Entire home/apt" && d.price <= 1000
+          //   ),
+          //   viewport.zoom > detailedZoom
+          // ),
           districtLayer(
             districts,
             rents.map(cleanRent),
@@ -122,6 +150,8 @@ const Map = () => {
             viewport.zoom > detailedZoom
           ),
           wallLayer(wall),
+          ...metroLayer(metro),
+          flatsLayer(flats),
           kitaLayer(
             kitas.filter(({ district }) =>
               preferredDistricts.includes(district)
