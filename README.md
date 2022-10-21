@@ -1,4 +1,4 @@
-![](berlinmap.png)
+![](berlin.png)
 
 ## Berlin districts visualization
 
