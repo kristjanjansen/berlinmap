@@ -1,3 +1,9 @@
+![](berlinmap.png)
+
+## Berlin districts visualization
+
+A tool for analyzing Berlin housing pricing, public transportation network and kindergarten availability. Based on Berlin open data, visualized using Mapbox, d3 and React.
+
 ## Data sources
 
 https://www.wohnungsboerse.net/mietspiegel-Berlin/2825
